@@ -9,7 +9,7 @@ const IndexPage = ({data}) => (
   <Layout>
     <SEO title="Home" />
     <h1>Welcome to the Outdoors</h1>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
+    <div className="post-list">
         <h2>Posts</h2>
         <ul>
             {data.postgres.posts.map(post => (
@@ -22,7 +22,6 @@ const IndexPage = ({data}) => (
             ))}
         </ul>
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
   </Layout>
 );
 

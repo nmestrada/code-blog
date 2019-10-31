@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
           paddingTop: 0,
         }}
       >
-        <main>{children}</main>
+        <main className="page-content">{children}</main>
         <footer>
           <div className="footer">
             <span>© {new Date().getFullYear()} Natalie Estrada</span>

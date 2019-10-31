@@ -20,14 +20,14 @@ exports.createPages = async ({graphql, actions: { createPage}}) => {
   }
   `)
 
-//   result.data.postgres.posts.forEach(post => {
-//     createPage({
-//       path: slugifyPost(post),
-//       component: path.resolve('./src/templates/blog-post.js'),
-//       context: {
-//         postId: post.id,
-//       },
-//     });
-//   });
+  result.data.postgres.posts.forEach(post => {
+    createPage({
+      path: slugifyPost(post),
+      component: path.resolve('./src/components/blog-post.js'),
+      context: {
+        postId: post.id,
+      },
+    });
+  });
 
 }
