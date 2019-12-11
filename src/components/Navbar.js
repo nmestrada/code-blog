@@ -12,9 +12,9 @@ export default function Navbar({siteTitle}) {
                 </Link></h1>
                 <div className="Links">
                 <Link to="/">Home</Link>
-                <Link to="archive">Archive</Link>
-                <Link to="about">About</Link>
-                <Link to="/NewPostForm">New Post</Link>
+                <Link to="blog">Blog</Link>
+                <Link to="projects">Projects</Link>
+                {/* <Link to="/NewPostForm">New Post</Link> */}
                 </div>
             </nav>
         </div>

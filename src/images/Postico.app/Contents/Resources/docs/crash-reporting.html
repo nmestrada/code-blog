@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head>
+	<meta charset=utf-8>
+	<title>Automatic Crash Reporting</title>
+	<link rel=stylesheet href=style.css>
+</head><body>
+	<h1>Automatic Crash Reporting in Postico</h1>
+	<p>
+		Starting with version 1.5, Postico has a built-in crash reporter.
+		Whenever Postico crashes, an anonymous crash report is sent to crashes.eggerapps.at.
+	</p>
+	<p>
+		We use the popular PLCrashReporter library to generate crash reports, with one modification:
+		Postico anonymizes paths in the crash report to avoid leaking your username.
+		Therefore, our crash reports contain no personal data.
+	</p>
+	<p>
+		For privacy reasons, we do not use a third party service for crash reporting.
+		Crash reports are sent directly to a server we own.
+		We do not log IP addresses.
+	</p>
+	<p>
+		Automatic Crash Reporting can be disabled in Postico preferences.
+		If you disable automatic crash reporting, Postico will inform you of a new crash report next time you start it.
+		You can then review the crash report file on disk, and maybe send it to us via email.
+		(We can only fix bugs that we know about!)
+	</p>
+	<p>
+		Crash reports from Postico are also stored locally, which is useful if automatic crash reporting fails, or if you want to review what data Postico transmits.
+		You can find them in <tt>~/Library/Containers/at.eggerapps.Postico/Data/Library/Application Support/Postico/Crash Reports</tt>
+	</p>
+</body></html>

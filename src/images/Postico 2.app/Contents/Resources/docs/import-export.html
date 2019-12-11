@@ -1,0 +1,239 @@
+<!DOCTYPE html><html><head>
+	<meta charset=utf-8>
+	<title>Importing and Exporting Data</title>
+	<link rel=stylesheet href=style.css>
+</head><body>
+	<h1>Importing and Exporting data in Postico</h1>
+
+	<h2>Copy &amp; Paste</h2>
+	<p>
+		Copy&nbsp;&amp;&nbsp;Paste is the most convenient way to import and export data in Postico.
+	</p>
+	<p>
+		Postico, like most other Mac apps, copies tabular data in "Tab Separated Values" (TSV) format: columns are separated by tabs, and row are separated with newlines. The limitation of this format is that your data can't contain tabs or newlines. Postico replaces these special characters with spaces when you copy data to the clipboard.
+	</p>
+	<p>
+		You can also copy data in other formats using the "Copy Special" command.
+		Postico offers the following alternative formats for copying: TSV with headers, CSV, CSV with headers, SQL Insert Statements.
+	</p>
+	<p>
+		Postico also allows pasting data in TSV format.
+		This is great for importing data from spreadsheets in <b>Excel</b> or <b>Numbers</b>, or from MySQL databases using <b>Sequel Pro</b>, or even from tables on websites in <b>Safari</b>.
+	</p>
+	<p>
+		Here's how to paste data into Postico:
+	</p>
+	<ul>
+		<li>
+			Create a target table with all the columns you want to import, or use an existing table.
+		</li>
+		<li>
+			Arrange the columns in the target table in the same order as the original data you copied. You can move columns by dragging the column header.
+			(Don't worry if either the source or target table have extra columns at the end; Postico will simply ignore them)
+		</li>
+		<li>
+			Make sure that the keyboard focus is on the table view in Postico and paste your data.
+		</li>
+		<li>
+			You should now see all your new data highlighted in yellow.
+			Check that everything was pasted correctly, then click save to write changes to the database.
+		</li>
+	</ul>
+	
+	<h2>Importing CSV Files</h2>
+	
+	<ol>
+		<li>
+			<b>Choose "Import CSV…" from the "File" menu (&#8984;-I)</b><br>
+			Go to "File" &rarr; "Import CSV…" or press &#8984;-I and select a CSV file you'd like to import.
+			Alternatively, you can select "Import…" from the context menu by right-clicking on the table name in the left sidebar.
+			If your file can't be selected, change its extension to ".csv".
+		</li>
+		<li>
+			<b>Adjust CSV Import Settings</b><br>
+			Postico tries to load a preview of your file contents.
+			If the content isn't diplayed properly, you have to adjust settings by changing the file's encoding, separator, quote and decimal character.
+			If your CSV file has a header, make sure the "First Row is Header" checkbox is enabled.
+		</li>
+		<li>
+			<b>Select your target table</b><br>
+			If your target table hasn't been selected before, choose your target table from the popup button.
+		</li>
+		<li>
+			<b>Select source columns to import</b><br>
+			Each source column can be imported into one column of your target table. 
+			Match and arrange source and target columns by selecting the destination from popup menu.
+			If you choose "Do not import", Postico will ignore the column.
+		</li>
+		<li>
+			<b>Fix warnings (if necessary)</b><br>
+			When you select target columns, Postico checks the import file.
+			If problems occur (eg. when trying to import textual data into a numeric column),
+			Postico will display warnings. Postico does not allow importing files with warnings.
+			<br>
+			If your CSV file is very large, Postico will only check the beginning of the file.
+			In this case, Postico checks the full file during import.
+			If a problem is found, the import is aborted and changes are reverted.
+		</li>
+		<li>
+			<b>Click "Import"</b><br>
+			Once you've applied your settings, you can start the import procedure by clicking the "Import" button.
+			If the button is disabled, make sure that least one column is selected to import.
+		</li>
+	</ol>
+	
+	<h3>File Formats and Encodings</h3>
+	<p>
+		Since CSV files are not standardized, Postico is flexible and supports many configurations.
+		Nevertheless, not all CSV files can be imported and in some cases you have to change the file's encoding.
+		The default settings are such that a file exported from Postico with the "International" setting (see below) can be imported.
+		This is also the same format that the PostgreSQL command <tt>COPY (...) CSV HEADER;</tt> uses. (Except for the handling of empty strings, see below.)
+	<p>
+		<i>Character Encoding</i><br>
+		Postico can import UTF-8 files only. If your CSV file has a different encoding, use your favorite text editor to convert.
+	<p>
+		<i>Column Separators</i><br>
+		Postico supports CSV files with the most common column separator characters: comma (,), semicolon (;), tab, or pipe (|)
+	<p>
+		<i>Line Separators</i><br>
+		Supported line separators are: Unix (LF), Windows (CRLF), Mac (CR). You do not need to configure this, Postico automatically allows any of these separators.
+	<p>
+		<i>Quoting</i><br>
+		Only double quotes are allowed. When a field contains the quote character, it can be escaped either by doubling (e.g. "") or by preceding it with a backslash (\").
+	<p>
+		<i>Decimal Separator</i><br>
+		Decimal numbers can use either period (.) or comma (,)
+	
+	<h3>Data Types</h3>
+	<p>
+		Postico has special handling for numbers and NULL values. All other types are sent to the server without modification.
+	<p>
+		<i>Numbers</i><br>
+		Postico automatically validates numbers, replaces the decimal separator if necessary and removes optional grouping characters (eg. thousands separator).
+	<p>
+		<i>NULL values</i><br>
+		All empty values in the CSV file are converted to NULL. Postico treats empty strings as NULL.
+	<p>
+		<i>Dates</i><br>
+		Since dates are sent to the server without modification, they will be imported according to the configuration of the database server.
+		The date format YYYY-MM-DD is recommended for importing (should always work).
+		Dates in other formats are interpreted according to the servers DATESTYLE. Make sure that the server and your import file have the same DATESTYLE.
+		(<a href="https://www.postgresql.org/docs/current/static/datatype-datetime.html">PostgreSQL Documentation</a>)
+	
+	<h3>Transactional Import</h3>
+	<p>
+		Import in Postico is transactional. Either the whole import completes successfully; or the database is not changed at all.
+		You will never end up with a half-finished import.
+	<p>
+		Postico achieves this by wrapping INSERT statements in a transaction.
+		This allows Postico to rollback (undo) the import in the event of an error.
+	<p>
+		Before the import, Postico executes "BEGIN" to start a transaction, and after a successful import "COMMIT".
+		If a transaction is already running (e.g. because you manually issued a BEGIN statement), Postico creates a SAFEPOINT instead.
+		After a successful import, the safepoint is released. This means that a failed import will not cause an already running transaction to fail.
+		
+	<h3>Import Errors</h3>
+	<p>
+		This list contains common errors which can occur during the import.
+	<dl>
+		<dt>Import cancelled</dt>
+		<dd>This means that the import was cancelled by the user.</dd>
+		
+		<dt>An error occured while reading the CSV file</dt>
+		<dd>The CSV file could'nt be read properly. Fix the affected rows and try again.</dd>
+		
+		<dt>Connection lost</dt>
+		<dd>The connection to the server has been lost. Re-connect and try again.</dd>
+		
+		<dt>Transaction begin error</dt>
+		<dd>Postico wasn't able to begin the transaction.</dd>
+		
+		<dt>Transaction commit error</dt>
+		<dd>Postico wasn't able to commit the transaction.</dd>
+		
+		<dt>Rollback failed</dt>
+		<dd>
+			An error occurred during import, but the transaction rollback (undo of the import) failed.
+			In most cases (e.g. lost connections) the server will automatically rollback the transaction even though the explicit rollback failed.
+		</dd>
+		
+		<dt>Rollback not possible</dt>
+		<dd>
+			The import failed and Postico wasn't able to rollback changes to the table.
+			Usually this happens when a transaction was already active at the start of the import, but the server does not support SAVEPOINT.
+			You need to rollback the transaction manually before you can continue.
+		</dd>
+	</dl>
+	
+	<h2>Exporting CSV Files</h2>
+	<p>
+		Postico can export tables and query results as "Comma Separated Values" (CSV) files.
+		You can export either a single table, or multiple tables at once.
+	</p>
+	<p>
+		When exporting the current table (by selecting "Export" from the File menu),
+		all rows in the table will be exported, even though Postico only displays the first page. If filters are active, they will be used, and only filtered rows will be exported.
+	</p>
+	<p>
+		Make sure the keyboard focus is on the table view when selecting export;
+		otherwise you may end up exporting the selected table in the sidebar.
+	</p>
+	<p>
+		You can export multiple tables by selecting them in the sidebar or in the grid view (hold down the shift or command keys). Then right-click and chose export from the context menu.
+		When exporting multiple tables,
+		Postico will create a folder containing one CSV file per table.
+	</p>
+	<p>
+		You can also export query results in the SQL Query view.
+	</p>
+	<h3>CSV Export Settings</h3>
+	<p>
+		Unfortunately CSV is a very losely defined format.
+		Applications implement CSV in very different ways.
+		This fact is made even worse by the fact that apps change behavior depending on your system's language &amp; region settings.
+	</p>
+	<p>
+		I've examined the CSV file support of popular applications, and I came to the conclusion that most apps understand one of two formats, which I call "International" and "Continental":
+	</p>
+	<ul>
+		<li>
+			The <b>International Format</b> is used in English speaking countries and Asia. It uses a period (.) as the decimal mark and a comma (,) as field separator. 
+		</li>
+		<li>
+			The <b>Continental Format</b> is used in continental Europe and South America. It uses a comma (,) as decimal mark and a semicolon (;) as field separator. 
+		</li>
+	</ul>
+	<p>
+		Most apps allow using double quotes (") around values that can contain special characters. This allows CSV to store data that contains special characters like the field separator or newlines. Postico also uses quotes:
+	</p>
+	<ul>
+		<li>
+			Numeric values are stored without quotes 
+		</li>
+		<li>
+			Strings are always surrounded by quotes 
+		</li>
+		<li>
+			NULL values are stored as empty fields (ie. two consecutive commas)
+		</li>
+		<li>
+			When a value contains a quote, the quote is doubled in the output
+		</li>
+	</ul>
+	<p>
+		This produces output compatible with the majority of applications I've tested.
+		However, there are two more settings (mostly for compatibility with Microsoft Excel):
+	</p>
+		<ul>
+		<li>
+			Allow Newlines: Some apps don't allow newlines in the data. You can uncheck this box to replace newlines with spaces.
+		</li>
+		<li>
+			Encoding: You should always choose Unicode/UTF-8 if possible.
+			However, some apps expect a legacy encoding.
+			Postico supports MacRoman and Windows Latin 1 as alternatives. 
+		</li>
+	</ul>
+
+
+</body></html>

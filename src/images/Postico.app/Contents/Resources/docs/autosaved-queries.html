@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head>
+	<meta charset=utf-8>
+	<title>Autosaving queries</title>
+	<link rel=stylesheet href=style.css>
+</head><body>
+	<h1>Autosaving queries</h1>
+	
+    <p>Postico automatically saves queries you enter into the SQL editor.</p>
+    <p>Postico saves queries per favorite, per window or tab, and per database.</p>
+    <p>If you connect to the same favorite again, and open the same number of windows as in a previous session, and open the same database, Postico will show the queries from the last session.</p>
+    
+    <h2>Disabling Autosave</h2>
+    
+    <p>Postico has a hidden preference to disable autosaving queries.</p>
+    <p>To disable autosaving, execute the following command in the Terminal:</p>
+    <pre>defaults write at.eggerapps.Postico DontRestoreQueryViewText 1</pre>
+    <p>Note that this does not delete previously autosaved queries from disk, it merely disables restoration and autosaving going forward.</p>
+    
+    <h2>Recovering autosaved queries</h2>
+    
+    <p>Queries are saved as text files in the Application Support directory at the following path:</p>
+    <pre>~/Library/Containers/at.eggerapps.Postico/Data/Library/Application Support/Postico/Autosave Queries</pre>
+    <p>If you want to recover queries, check this directory.</p>
+    
+    <h2>When Postico hangs while opening an autosaved query</h2>
+    <p>
+        Postico should be able to handle reasonably large SQL files, but we've received reports that the text rendering system can hang when Postico tries to restore very large autosaved queries.
+        When this happens, you can check the autosave directory for large files, and remove them before starting Postico.
+    </p>
+    
+    <h2>Older versions of Postico (before 1.3.2)</h2>
+    
+    <p>Old versions of Postico only saved queries from a single window (the last window you closed). This behavior was unexpected by most users, so we changed it.</p>
+    <p>Old versions of Postico stored autosaved queries in the connection favorite database, making them difficult to recover when you can't connect to the server.</p>
+    
+</body></html>

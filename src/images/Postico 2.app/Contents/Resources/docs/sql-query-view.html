@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head>
+	<meta charset=utf-8>
+	<title>Using the SQL Query View in Postico</title>
+	<link rel=stylesheet href=style.css>
+</head><body>
+	<h1>Using the SQL Query View</h1>
+
+    <p>
+        Custom database queries can be executed from the SQL Query view in Postico.
+        You can get to the SQL Query View by clicking on "SQL Query" in the sidebar.
+		There's also a keyboard shortcut (⇧⌘T) to navigate to the query view.
+    </p>
+    
+	<h2>Executing SQL Statements</h2>
+	<p>
+		The query view highlights the current statement in light grey.
+		Use the command "Execute Query" in the "Connection" menu or press&nbsp;⌘↩︎ to execute the current statement (or the current selection, if any).
+		The corresponding results are displayed below the text view.
+    </p>
+	<p>
+		You can execute multiple statements at once by selecting them.
+		They will be executed in an implicit transaction, so if one of the statements fails, all changes to the database will be rolled back.
+	</p>
+	<p>
+		When you execute multiple statements, Postico will display the first result. You can switch between results using a popup menu button at the bottom left.
+	</p>
+    <p>
+        Use the command "Execute All Queries" in the "Connection" menu or&nbsp;⌥⌘↩︎ to execute all statements at once.
+    </p>
+    <p>
+        To clear the result area, use the command "Clear Results" in the "Connection" menu or press ⌘K.
+	</p>
+	
+    <h2>Autocomplete</h2>
+    
+    <p>
+    There are two autocomplete modes available in the SQL query view.
+    <ul>
+		<li>
+			<b>Tab Completion:</b> Press Tab, and Postico automatically tries to complete the word you are typing.
+			When multiple completions are possible, you hear a beep. Press Tab again to display a list of possible completions in a popup window.
+			We tried to make the behaviour similar to tab completion in command-line tools like <i>psql</i> and <i>bash</i>.
+		</li>
+        <li>
+			<b>Show Completions:</b>
+			Press Ctrl-Space or ESC, and Postico shows a list of all possible completions in a popup window, including additional matches related to the word you have typed.
+			This mode can even be used if there is no word (e.g. you are trying to "complete" a whitespace character).
+			You can also trigger autocomplete using the command "Show Completions" in the "Edit" menu.
+		</li>
+    </ul>
+    </p>
+    <p>In the autocompletion window, use the arrow keys to select a completion, then hit the return key to confirm.</p>
+    <p>Multiple matches of the same suggestion will be grouped by type, use the left and right arrow keys to expand and collapse grouped suggestions.</p>
+
+	<h2>Indentation</h3>
+	<p>
+        Multiple selected lines can be indented at once.
+    </p>
+    <p>
+        Use the command "Shift Right" in the "Edit" menu or press&nbsp;⇥ or&nbsp;⌘] to shift the selected line(s) to the right (increase indentation).
+    </p>
+    <p>
+        Use the command "Shift Left" in the "Edit" menu or press&nbsp;⇧⇥ or&nbsp;⌘[ to shift the selected line(s) to the left (decrease indentation).
+    </p>
+
+    <h2>Looking up PostgreSQL commands</h3>
+
+    <p>
+    	If you have <a href="https://kapeli.com/dash">Dash</a> installed, you can use the command "Look Up In Dash" in the context menu or press Ctrl-H to look up the current word (or selection) in Dash.
+    </p>
+
+</body></html>

@@ -1,0 +1,115 @@
+body {
+	font-family: system, -apple-system, Helvetica, sans-serif, "Apple Color Emoji";
+	font-size: 13px;
+	background: #2f2f2f;
+	color: #fff;
+}
+
+.namespace-prefix {
+	color: #aaa;
+}
+
+.title {
+	font-size: 11px;
+	font-weight: bolder;
+	margin-bottom: 2px;
+	float: left;
+	clear: both;
+}
+
+.subtitle {
+	font-size: 11px;
+	color: #aaa;
+	margin-bottom: 5px;
+	float: right;
+}
+
+.suggestion-details {
+	display: none; /* hide details when we have multiple suggestions. this rule is overridden if we have only one suggestion */
+	clear: both;
+	font-size: 11px;
+	color: #aaa;
+}
+
+.suggestion:last-child:first-child .suggestion-details {
+	display: block; /* show details when there is only one suggestion */
+}
+
+table {
+	padding: 0;
+	margin: 0;
+}
+
+th, td {
+	border-collapse: collapse;
+	padding: 0 5px 4px 0;
+	font-size: 10px;
+}
+
+td {
+	;
+}
+
+.sql-identifier {
+	
+}
+
+.sql-meta-type { /* like Function, Table Column, View Column */
+	background: #707070;
+	border-radius: 3px;
+	color: white;
+	padding: 1px 4px 2px;
+	font-size: 10px;
+}
+
+.sql-database-identifier {
+}
+
+.sql-schema-identifier {
+}
+
+.sql-table-identifier {
+}
+
+.sql-column-identifier {
+}
+
+.sql-function-identifier {
+}
+
+.sql-extension-identifier {
+	
+}
+
+.title .sql-function-arguments {
+	font-weight: normal;
+}
+
+.title .namespace-prefix {
+	font-weight: normal;
+	display: inline-block;
+}
+
+.title .main-title {
+	display: inline-block;
+}
+
+.attributes {
+	margin-left: 30px;
+}
+
+.attribute {
+	margin-bottom: 2px;
+}
+
+.attribute-name {
+	color: #eee;
+	mmargin-right: -11px;
+	margin-left: -15px;
+}
+
+.attribute-type {
+	color: #aaa;
+	mdisplay: inline-block;
+	mmargin-left: 15px;
+}

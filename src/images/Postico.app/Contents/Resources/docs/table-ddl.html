@@ -1,0 +1,48 @@
+<!DOCTYPE html><html><head>
+	<meta charset=utf-8>
+	<title>Using the Table DDL View in Postico</title>
+	<link rel=stylesheet href=style.css>
+</head><body>
+	<h1>Using the Table DDL View</h1>
+
+    <p>
+        The DDL (data definition language) view renders the SQL statements necessary to re-create the selected table/view from scratch.
+        It also works if the table is new, or changes are made in the Structure editor.
+        In case of pending changes, the DDL view renders multiple sections:
+        <ul>
+            <li>SQL statements to create the current version</li>
+            <li>SQL statements to to perform the pending changes</li>
+            <li>SQL statements to create a preview of the final version (pending changes applied)</li>
+        </ul>
+    </p>
+    <p>
+        There are three table views (Content / Structure / DDL).
+        To navigate, select the required table view in the "Navigate" menu or use the segmented button at the bottom.
+		There's also a keyboard shortcut (⌥⌘T) to cycle between the table views.
+    </p>
+
+    <h2>Interaction with other applications</h2>
+    <p>
+        To copy selected sections to the clipboard, simply use the command "Copy" in the context menu.
+    </p>
+    <p>
+        Alternatively, you can use the "Save Query…" button to save the whole buffer to a file.
+    </p>
+    
+    <h2>Known Limitations</h2>
+    <p>
+        Postico does not support all database features.
+		The DDL view is not intended for backup purposes.
+        Please use <a href="https://www.postgresql.org/docs/current/static/app-pgdump.html">pg_dump</a> for backups.
+    </p>
+    
+    <p>
+		Postico tries to simplify the SQL for better readability:
+		<ul>
+			<li>Schema qualification is skipped if the schema name is <code>public</code></li>
+			<li>Tablespace declaration is skipped if the tablespace name is <code>pg_default</code></li>
+		</ul>
+    
+    </p>
+
+</body></html>

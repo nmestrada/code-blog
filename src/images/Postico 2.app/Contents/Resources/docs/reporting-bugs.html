@@ -1,0 +1,77 @@
+<!DOCTYPE html><html><head>
+	<meta charset=utf-8>
+	<title>Reporting Bugs</title>
+	<link rel=stylesheet href=style.css>
+</head><body>
+	<h1>How to Report Bugs in Postico</h1>
+	<h2>When Postico crashes...</h2>
+	<p>
+		<b>When an app crashes</b>, macOS will terminate it and display an error message.
+		A crash report will be generated.
+		It's very important to include this file when reporting crashes; otherwise we can't determine what has happened.
+	</p>
+	<p>
+		You can find Crash Reports in the directory ~/Library/Logs/DiagnosticReports/.
+		Please send crash reports as an attachment via email; don't copy &amp; paste it.
+		If there are multiple crash reports for Postico, send all of them.
+	</p>
+
+	<h2>When Postico hangs...</h2>
+	<p>
+		<b>A hang is when the app stops responding.</b>
+		Sometimes the beachball cursor appears after a few seconds, but not for all types of hangs.
+		When reporting a hang, please send a process sample of Postico.
+	</p>
+	<p>
+		To create a process sample, open Activity Monitor, select Postico, click the info button in the toolbar, then click "Sample".
+		After a few seconds a sample will appear. Save it, then email it to us.
+		Make sure to sample Postico while it is actually hanging.
+	</p>
+	
+	<h2>How to contact us</h2>
+	<p>
+		The quickest way to contact us is our email address: <a href="mailto:postico@eggerapps.at">postico@eggerapps.at</a>.
+	</p>
+	<p>
+		We also have a public issue tracker on Github:
+		<a href="https://github.com/jakob/Postico/issues">github.com/jakob/postico/issues</a>.
+	</p>
+	<h2>What other information should you include when reporting bugs?</h2>
+	<ul>
+		<li>
+			<p>
+				Describe what you did to trigger the bug
+			</p>
+			<p>
+				The more detail you can provide, the better.
+				Postico has a lot of functionality, and some of the bug reports I receive are ambiguous.
+				For example, when you say you clicked on the table, did you click in the sidebar or in the main view?
+			</p>
+		</li>
+		<li>
+			<p>
+				Include screenshots or screen recordings
+			</p>
+			<p>
+				Complicated bugs can be hard to describe with words, so it's often easier to just show a picture.
+				You can capture parts of the screen with the shortcut Cmd-Shift-4, and you can use
+				QuickTime Player to record a part of the screen.
+			</p>
+		</li>
+		<li>
+			<p>
+				Which versions of OS X and Postico are you using?
+			</p>
+		</li>
+		<li>
+			<p>
+				What server are you connecting to?
+			<p>
+				Are you connecting to a local or to a remote server?
+				Are you hosting the server yourself, or is it a server from a cloud service provider?
+				Is it a vanilla PostgreSQL server or a derivation like Amazon Redshift?
+				What's the version of the server?
+			</p>
+		</li>
+	</ul>
+</body></html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html><html><head>
+	<meta charset=utf-8>
+	<title>Connection URLs</title>
+	<link rel=stylesheet href=style.css>
+</head><body>
+	<h1>Connection URLs</h1>
+	<p>
+		Postico supports using connection URLs for connecting to PostgreSQL servers.
+	</p>
+	<p>
+		A typical connection URL might look like this:
+	</p>
+	<p>
+		<tt>postgresql://jakob@localhost/marketing</tt>
+	</p>
+	<p>
+		This URL would connect to a server running locally (localhost), with user name "jakob", and connect to the database "marketing"
+	</p>
+	<h2>What you can do with connection URLs</h2>
+	<ul>
+		<li>
+			connect to a PostgreSQL server by clicking a link on a website (eg. an internal dashboard)
+		</li>
+		<li>
+			open Postico from the command line with the <tt>open</tt> command
+		</li>
+		<li>
+			create and update favorites from the command line
+		</li>
+	</ul>
+	<h2>URL Schemes supported by Postico</h2>
+	<p>
+		Postico opens URLs with any of the following schemes:
+	</p>
+	<ul>
+		<li>postgres:</li>
+		<li>postgresql:</li>
+		<li>redshift:</li>
+		<li>postico:</li>
+		<li>postgres+ssh:</li>
+		<li>postgresql+ssh:</li>
+		<li>postico+ssh:</li>
+	</ul>
+	<p>
+		postgres and postgresql can both be used for direct connections to PostgreSQL servers.
+	<p>
+		redshift is provided as an alternative for connecting to Amazon Redshift clusters. Postico treats it the same as postgres:
+	<p>
+		postico: is an alternative url scheme that you can use if you have multiple apps that support postgres: URLs, but want to open Postico specifically
+	<p>
+		postgres+ssh: can be used to connect to a PostgreSQL server via an SSH tunnel (see examples)
+	
+	<h2>Example URLs</h2>
+	<ul>
+		<li><tt>postgres://user:password@host:port/database</tt></li>
+		<li><tt>postgres+ssh://sshuser:sshpassword@sshhost:sshport/user:password@host/database</tt></li>
+		<li><tt>postgres://user:password@host/database?ssh_user=sshuser&amp;ssh_host=sshhost</tt></li>
+	</ul>
+	
+	<h2>Supported Query Parameters</h2>
+	
+	<dl>
+		<dt>nickname</dt>
+		<dd>
+			A nick name for the connection. Can be used when creating a new favorite, or when updating an existing favorite.
+		</dd>
+		
+		<dt>uuid</dt>
+		<dd>
+			A UUID in standard format for the favorite.
+			If none is provided, a random UUID will be generated.
+			This is useful if you want to update the favorite later, but want to allow changing the nickname manually.
+			Example: e6ad04c5-9ebb-4e5c-95d0-9c634f373c83
+		</dd>
+		
+		<dt>dbname</dt>
+		<dd>
+			The database name to connect to.
+		</dd>
+		
+		<dt>host</dt>
+		<dd>
+			The host name of the dataase server.
+		</dd>
+		
+		<dt>user</dt>
+		<dd>
+			The user name for the dataase server
+		</dd>
+		
+		<dt>password</dt>
+		<dd>
+			The password for the dataase server
+		</dd>
+		
+		<dt>port</dt>
+		<dd>
+			The port number that the database is running on. Default is 5432
+		</dd>
+		
+		<dt>ssh_enabled</dt>
+		<dd>
+			Can be 'true' or 'false'. Wheter to connect via SSH tunnel or not.
+		</dd>
+		
+		<dt>ssh_host</dt>
+		<dd>
+			The host name of the SSH server.
+		</dd>
+		
+		<dt>ssh_port</dt>
+		<dd>
+			The port of the SSH server. Default is 22
+		</dd>
+		
+		<dt>ssh_user</dt>
+		<dd>
+			The username for authenticating with the SSH server.
+		</dd>
+		
+		<dt>ssh_password</dt>
+		<dd>
+			The password for the SSH server.
+		</dd>
+		
+		<dt>ssh_private_key_path</dt>
+		<dd>
+			Provide the path to a private key file for authenticating to an SSH server.
+		</dd>
+		
+		<dt>create_favorite</dt>
+		<dd>
+			Can be 'true' or 'false'. Default 'true'.
+			Whether to automatically create a favorite when no matching favorite was found.
+			If you set this to 'false', Postico will connect to the URL without creating a favorite.
+			This avoids cluttering the Favorites window if you use many different connections, but it also disables some features that rely on favorites, like query history.
+		</dd>
+		
+		<dt>connect_favorite</dt>
+		<dd>
+			Can be 'true' or 'false'. Default 'true'. When this is true, Postico immediately connects to the favorite corresponding to the URL.
+			When it is false, Postico only shows the favorite in the favorite window, but does not connect.
+		</dd>
+	</dl>
+	
+</body></html>
