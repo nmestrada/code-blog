@@ -13,7 +13,7 @@ export default function Navbar({siteTitle}) {
                 <div className="Links">
                 <Link to="/">Home</Link>
                 <Link to="blog">Blog</Link>
-                <Link to="projects">Projects</Link>
+                <Link to="resume">Resume</Link>
                 {/* <Link to="/NewPostForm">New Post</Link> */}
                 </div>
             </nav>
