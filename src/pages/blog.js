@@ -12,12 +12,15 @@ const Archive = ({data}) => (
         <h2>Posts</h2>
         <ul>
             {data.postgres.posts.map(post => (
+            <div>
+                <p>{post.content}</p>
                 <li key={post.id}>
                 <strong>
                     <Link to={slugifyPost(post)}>{post.title}</Link>
                 </strong>{" "}
                 at <em>{post.date}</em>
                 </li>
+            </div>
             ))}
         </ul>
     </div>
@@ -31,6 +34,7 @@ export const query = graphql`
         id
         title
         date
+        content
       }
     }
   }

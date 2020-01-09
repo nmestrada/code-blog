@@ -25,6 +25,7 @@
     "react-icons": "^3.8.0",
     "react-pdf": "^4.1.0",
     "react-reveal": "^1.2.2",
+    "react-youtube": "^7.9.0",
     "sequelize": "^5.21.2"
   },
   "devDependencies": {
