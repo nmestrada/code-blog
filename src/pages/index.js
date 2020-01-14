@@ -24,6 +24,7 @@ const IndexPage = ({data}) => (
         <p>I'm always up for learning new libraries, frameworks and languages.</p>
         <p>My Hobbies include: Argentine Tango dancing, gardening and watercolor painting</p>
     </div>
+
   </Layout>
 );
 
