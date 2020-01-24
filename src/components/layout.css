@@ -7,12 +7,19 @@ body {
   font-family: 'Lato', sans-serif;
   padding: .45em 2.65em 3em;
   line-height: 1.5;
+  background-color: rgb(252, 224, 224);
 }
 h1 {
   margin: auto;
   text-align: center;
   border-bottom: 1px;
   padding-bottom: .5em;
+}
+h2 {
+    text-align: center;
+}
+.nav > h2 {
+    margin:0;
 }
 a{
     color:#C16266;
@@ -22,6 +29,10 @@ img {
 }
 #nav {
     margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .headshot{
     border-radius: 50%;
@@ -29,7 +40,6 @@ img {
     display: inline-block;
 }
 .page-content{
-    background-color:rgba(255,255,255, 1);
     border-radius: 25px;
     padding: 2.5rem;
 }
@@ -38,7 +48,7 @@ img {
 }
 .nav{
     list-style:none;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     padding:0;
     display:flex;
     justify-content: center;
@@ -50,13 +60,22 @@ img {
     display:inline-block;
     padding:10px;
     text-decoration: none;
+    font-size: 1.3rem;
     color:#D57D93;
     text-transform: uppercase;
 }
 
 .nav a:hover {
-  color: green;
+  text-decoration: none;
+  color: rgb(93, 168, 42);
+  opacity: 0.4;
+  transition: 0.6s;
 }
+.about-me {
+    max-width: 45rem;
+    margin: auto;
+}
+
 input, textarea {
     width: 100%;
     padding: 12px 20px;
@@ -104,7 +123,6 @@ input, textarea {
 }
  
 footer {
-	background-color:rgba(255,255,255, 0.7);
     border-radius: 25px;
 	padding: 2em 0;
 	margin-top: 30px;
@@ -113,19 +131,66 @@ footer {
 a[href="linked"] {
     color:blue;
 }
-h3 {
-    display:inline-block;
-    font-weight:300;
-    margin-left:-5px;
-    box-shadow: -1px 1px, -2px 2px, -3px 3px, -4px 4px, -5px 5px, -6px 6px, -7px 7px, -8px 8px, -9px 9px, -10px 10px;   
-    transition:.4s;
-}
+
 .intro {
     display: flex;
     justify-content: center;
 }
 .blurb {
-    margin-left: 2rem;
+    justify-content: center;
+}
+
+/*================================= 
+Portfolio CSS
+================================= */
+.projects {
+    max-width: 45rem;
+    margin: auto;
+}
+.beerHopper > img {
+    max-width: 40rem;
+}
+.images {
+    margin: auto;
+    overflow: auto;
+    white-space: nowrap;
+    /* transform: rotate(270deg) translateX(-100%);
+    transform-origin: top left; */
+}
+.images > img {
+    max-width:10rem;
+    margin: 1rem;
+    border-radius: 5px;
+}
+.section-title {
+    background-color: #D57D93;
+    border-radius: 15px;
+    padding: 0 1rem;
+    margin: 0;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+}
+.section-content {
+    padding: 0.5rem;
+    margin: auto;
+    max-width: 43rem;
+    display:flex;
+    flex-direction: column;
+}
+.project-title {
+    flex-grow: 2;
+    justify-self: flex-start;
+}
+.section-title > h2 {
+    justify-self: flex-end;
+}
+.project-link {
+    color: #fff;
+    text-decoration: none;
+}
+h3.icons {
+    justify-self: flex-end;
 }
 /* ================================= 
   Media Queries

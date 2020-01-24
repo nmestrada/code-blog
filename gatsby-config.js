@@ -28,11 +28,12 @@ module.exports = {
       },
     },
     {
-        resolve: "gatsby-source-pg",
-        options: {
-            connectionString: "postgres://nmestrad::81Gg3r66@localhost:5432/blogblog",
-            schema: "public",
-        },
+      resolve: "gatsby-source-pg",
+      options: {
+        connectionString:
+          "postgres://nmestrad::81Gg3r66@localhost:5432/blogblog",
+        schema: "public",
+      },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
