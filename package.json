@@ -26,7 +26,7 @@
     "react-pdf": "^4.1.0",
     "react-reveal": "^1.2.2",
     "react-youtube": "^7.9.0",
-    "sequelize": "^5.21.2"
+    "sequelize": "^6.29.0"
   },
   "devDependencies": {
     "file-loader": "^5.0.2",
